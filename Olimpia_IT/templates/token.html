@@ -1,0 +1,19 @@
+<html>
+<head>
+    {% block static %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link rel="shortcut icon" type="image/png" href="{{url_for('static', filename='img/favicon.png')}}">
+    {% endblock %}
+    <title>{% block title %} Token {% endblock %}</title>
+</head>
+<body>
+    <div class="div_contenedor">
+        <div class="div_centrado1">
+            <h2>Your token</h2>
+            <textarea id="token">{{token}}</textarea>
+            <button id="btn">Copy</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/fun.js') }}"></script>
+</body>
+</html>

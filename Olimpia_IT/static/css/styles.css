@@ -1,0 +1,131 @@
+body {
+    background-color: #023047;
+    margin: 0;
+}
+
+#token {
+    text-align: center;
+    margin-top: 2rem;
+    width: 40rem;
+    height: 100px;
+}
+
+.div_centrado {
+    border-radius: 10%;
+    width: 600px;
+    height: 300px;
+    position: absolute;
+    top: 42%;
+    left: 34%;
+    margin-top: -100px;
+    margin-left: -100px;
+    animation: animacion 1s ease;
+}
+
+.div_centrado1 {
+    background-color: #e6e6e6;
+    box-shadow: 0 0 40px -10px #000;
+    border-radius: 8px;
+    width: 700px;
+    height: 300px;
+    position: absolute;
+    top: 42%;
+    left: 31%;
+    margin-top: -100px;
+    margin-left: -100px;
+    animation: animacion 1s ease;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    padding: 40px 30px 30px 30px;
+}
+
+.form {
+    background: #e6e6e6;
+    border-radius: 8px;
+    box-shadow: 0 0 40px -10px #000;
+    padding: 20px 30px;
+    max-width: calc(100vw - 40px);
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    position: relative
+}
+
+h2 {
+    text-align: center;
+    margin: auto;
+    padding-bottom: 10px;
+    width: 180px;
+    color: #78788c;
+    border-bottom: 3px solid #78788c
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background: none;
+    outline: none;
+    resize: none;
+    border: 0;
+    font-family: 'Montserrat', sans-serif;
+    transition: all .3s;
+    border-bottom: 2px solid #bebed2
+}
+
+input:focus {
+    border-bottom: 2px solid #78788c
+}
+
+p:before {
+    content: attr(type);
+    display: block;
+    margin: 28px 0 0;
+    font-size: 14px;
+    color: #5a5a5a
+}
+
+#strong {
+    height: 1.5rem;
+}
+
+strong {
+    content: attr(type);
+    display: block;
+    margin: 28px 0 0;
+    font-size: 14px;
+    color: #124860;
+}
+
+button {
+    float: right;
+    padding: 8px 12px;
+    margin: 8px 0 0;
+    background-color: #e6e6e6;
+    font-family: 'Montserrat', sans-serif;
+    border: 2px solid #78788c;
+    color: #5a5a6e;
+    cursor: pointer;
+    transition: all .3s
+}
+
+button:hover {
+    background: #78788c;
+    color: #fff
+}
+
+span {
+    margin: 0 5px 0 15px
+}
+
+@keyframes animacion {
+    from {
+        top: 75%;
+        opacity: 0;
+    }
+
+    to {
+        top: 42%;
+        opacity: 1;
+    }
+}
+

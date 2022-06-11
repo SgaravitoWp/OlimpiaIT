@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    {% block static %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link rel="shortcut icon" type="image/png " href="{{url_for('static', filename='img/favicon.png')}}">
+    {% endblock %}
+    <title>{% block title %} Token Generator {%  endblock %}</title>
+
+</head>
+
+<body>
+    <div class="div_contenedor">
+        <div class="div_centrado"><span>
+                <form class="form" action="/token_generator" method="POST">
+                    <h2>Token Generator</h2>
+                    <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                    <p type="Username:"><input placeholder="Enter your username ..." name="username"></input></p>
+                    <p type="Password:"><input placeholder="Enter your password ..." name="password"
+                            type="password"></input></p>
+
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div id="strong"><strong>{{message}}</strong></div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                    <button type="submit">Generate</button>
+                </form>
+            </span></div>
+    </div>
+</body>
+
+</html>

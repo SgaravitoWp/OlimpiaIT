@@ -1,0 +1,161 @@
+openapi: 3.0.1
+info:
+  title: OlimAPI
+  description: API encargada de gestionar la ejecución de un RPA que consulta información de empresas en el portal https://www.einforma.co/buscador-empresas-empresarios. 
+  version: 1.0.0
+servers:
+  - url: http://127.0.0.1:5000
+tags:
+  - name: Empresas
+    description: Este endpoint se encarga de retornar por medio de un metodo GET los primeros "n" registros de una empresa en el portal mencionado. 
+  - name: Token
+    description: Este endpoint se encarga de generar por medio de un metodo POST un token de autenticacion. 
+    
+paths:
+  /api:
+    get:
+      tags:
+      - Empresas
+      summary: Navega como máximo los "n" primeros resultados de las  empresas, analiza los datos y los retorna de manera      estructurada en un json. Provee un screenshot de cada uno de los resultados. navegados. 
+      parameters:
+      - $ref: '#/components/parameters/token'
+          
+      responses:
+        200:
+          description: Se conecto correctamente al portal web y se obtuvo la informacion deseada.   
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetInfo'
+            
+        401:
+          $ref: '#/components/responses/UnauthorizedandExpiration'
+          
+        404:
+           $ref: '#/components/responses/MissingSearchandandWrongParameter'
+           
+           
+  /token_generator:
+    post:
+      tags:
+      - Token
+      summary: Interfaz gráfica que envia el json  de login para generar un token de autenticacion util para el path /api. 
+      responses:
+        200:
+          description: En caso de login correcto en el que hay un redireccionamiento al path /token. 
+        404:
+          description: En caso de que el servidor este inactivo. 
+          
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostForm'
+    get:
+      tags:
+      - Token
+      summary: Llamado a la interfaz grafica que envia el json  de login para generar un token de autenticacion util para el path /api.  
+      responses:
+        200:
+          description: Cargo correctamente el path. 
+        404:
+          description: En caso de que el servidor 
+      
+
+  /token:
+    get:
+      tags:
+      - Token
+      summary: Interfaz grafica que provee el token de autenticacion despues del logeo en el path /token_generator. 
+      responses:
+        200:
+          description: Se entrega el token de autenticacion para ser copiado en el portapapeles.
+    
+    
+        
+          
+        
+            
+components:
+
+  responses:
+    UnauthorizedandExpiration: 
+      description: Mensaje por token invalido  o  mensaje por token expirado. 
+    MissingSearchandandWrongParameter:
+      description: No se paso parametro de busqueda por la url o ae paso un parametro incorrecto. 
+    
+  
+  parameters:
+    token:
+      schema:
+        type: string
+      name: token
+      in: header
+      description: Token de autenticacion. 
+      required: true
+      
+  schemas:
+    
+    PostForm:
+      type: object
+      properties: 
+        csrf token: 
+          type: string
+          description: Token de acceso por login generado por el path /token_generator. 
+        username:
+          type: string
+          description: Username con permisos. 
+        password:
+          type: string
+          description: Password correspondiente al username. 
+  
+  
+    GetInfo:
+      type: object
+      properties:
+        results:
+          type: array
+          description: Informacion Basica de los registros encontrados
+          items:
+            $ref: '#/components/schemas/InformacionBasica'
+            
+        score: 
+          type: integer
+          description: Score de similitud en la busqueda. 
+          
+    InformacionBasica:
+      type: object
+      properties:
+        ICI:
+          type: string
+        Nit:
+          type: string
+        Razón Social:
+          type: string
+        Forma Jurídica:
+          type: string
+        Dirección Actual:
+          type: string
+        Departamento:
+          type: string
+        Telefono:
+          type: string
+        Email:
+          type: string
+        Actividad CIUU:
+          type: string
+        Fecha de Constitución:
+          type: string
+        Matricula Mercantil:
+          type: string
+        Ultimo Balance: 
+          type: string
+        Fecha Último Dato:
+          type: string
+        Fecha Actualización Cámara Comercio:
+          type: string
+        
+            
+            
+            
+  
