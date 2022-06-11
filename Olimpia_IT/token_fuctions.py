@@ -5,7 +5,7 @@ from flask import jsonify
 from config import variables
 
 def expireDate():
-    expiration = datetime.now(tz=timezone.utc) + timedelta(seconds=120)
+    expiration = datetime.now(tz=timezone.utc) + timedelta(seconds=600)
     return expiration
 
 def writeToken(auth):

@@ -1,2 +1,0 @@
-FireFox Version: 101.0.1 (64-bit)
-Geckodriver Version: geckodriver-v0.31.0-win64

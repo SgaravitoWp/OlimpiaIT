@@ -1,0 +1,170 @@
+openapi: 3.0.1
+info:
+  title: OlimAPI
+  description: >-
+    API encargada de gestionar la ejecución de un RPA que consulta información
+    de empresas en el portal
+    https://www.einforma.co/buscador-empresas-empresarios.
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000/
+tags:
+  - name: Empresas
+    description: >-
+      Este endpoint se encarga de retornar por medio de un método GET los
+      primeros "n" registros de una empresa en el portal mencionado.
+paths:
+  /api:
+    get:
+      tags:
+        - Empresas
+      summary: >-
+        Navega como máximo los "n" primeros resultados de las  empresas, analiza
+        los datos y los retorna de manera      estructurada en un JSON. Provee
+        un screenshot de cada uno de los resultados navegados.
+      parameters:
+        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/number'
+      responses:
+        '200':
+          description: Se conectó correctamente al portal eInforma.
+          content:
+            results/json:
+              schema:
+                $ref: '#/components/schemas/Info200-results'
+            notResults/json:
+              schema:
+                $ref: '#/components/schemas/Info200-notResults'
+        '400':
+          $ref: '#/components/responses/NotValid'
+        '401':
+          description: Mensaje por token inválido, token expirado o ausencia de token.
+          content:
+            token/json:
+              schema:
+                $ref: '#/components/schemas/Info401'
+        '404':
+          description: No se pudo conectar con el portal.
+          content:
+            rpa/json:
+              schema:
+                $ref: '#/components/schemas/Info404'
+        '501':
+          description: La operación no se pudo implementar.
+          content:
+            SiteError/json:
+              schema:
+                $ref: '#/components/schemas/Info501-SiteError'
+            RpaError/json:
+              schema:
+                $ref: '#/components/schemas/Info501-RpaError'
+components:
+  responses:
+    NotValid:
+      description: >-
+        Argumento no válido o solicitud incorrecta. Argumento de search vacío o
+        number no entero.
+  parameters:
+    token:
+      schema:
+        type: string
+      name: token
+      in: header
+      description: Token de autenticación.
+      required: true
+    search:
+      schema:
+        type: string
+      name: search
+      in: query
+      description: Identificador de búsqueda.
+      required: true
+    number:
+      schema:
+        type: integer
+      name: number
+      in: query
+      description: Número de búsquedas.
+      required: false
+  schemas:
+    Info200-results:
+      type: object
+      properties:
+        results:
+          type: array
+          description: Información Básica de los registros encontrados.
+          items:
+            $ref: '#/components/schemas/InformacionBasica'
+        score:
+          type: integer
+          description: Score de similitud en la búsqueda.
+    InformacionBasica:
+      type: object
+      required:
+        - Razón Social
+      properties:
+        Actividad CIUU:
+          type: string
+        Departamento:
+          type: string
+        Dirección Actual:
+          type: string
+        Email:
+          type: string
+        Fecha Actualización Cámara Comercio:
+          type: string
+        Fecha de Constitución:
+          type: string
+        Fecha Último Dato:
+          type: string
+        Forma Jurídica:
+          type: string
+        ICI:
+          type: string
+        Matricula Mercantil:
+          type: string
+        Nit:
+          type: string
+        Razón Social:
+          type: string
+        Screnshot:
+          type: string
+        Search number:
+          type: string
+        Telefono:
+          type: string
+        Último Balance:
+          type: string
+    Info200-notResults:
+      type: object
+      properties:
+        messages:
+          type: string
+          description: No results
+    Info401:
+      type: object
+      properties:
+        messages:
+          type: string
+          description: Invalid token, Token has expired or You need an authorization token.
+    Info404:
+      type: object
+      properties:
+        messages:
+          type: string
+          description: Error connecting to the page
+    Info501-SiteError:
+      type: object
+      properties:
+        messages:
+          type: string
+          description: >-
+            There are problems with the page. Please try again or try again
+            later.
+    Info501-RpaError:
+      type: object
+      properties:
+        messages:
+          type: string
+          description: An error has occurred, please try again.

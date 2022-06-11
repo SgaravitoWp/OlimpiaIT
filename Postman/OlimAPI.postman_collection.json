@@ -1,0 +1,579 @@
+{
+	"info": {
+		"_postman_id": "512c06e3-9979-4635-bf38-d1d430f3dc60",
+		"name": "OlimAPI",
+		"description": "API encargada de gestionar la ejecución de un RPA que consulta información de empresas en el portal https://www.einforma.co/buscador-empresas-empresarios.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21334752"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "Navega como máximo los \"n\" primeros resultados de las  empresas, analiza los datos y los retorna de manera      estructurada en un JSON. Provee un screenshot de cada uno de los resultados navegados.",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) Token de autenticación.",
+								"key": "token",
+								"value": "{{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "results/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api?search=aute in labore minim Excepteur&number=-46742203",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "aute in labore minim Excepteur",
+									"description": "(Required) Identificador de búsqueda."
+								},
+								{
+									"key": "number",
+									"value": "-46742203",
+									"description": "Número de búsquedas."
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Se conectó correctamente al portal eInforma.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) Token de autenticación.",
+										"key": "token",
+										"value": "aute in labore minim Excepteur"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000//api?search=aute in labore minim Excepteur&number=-46742203",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"",
+										"api"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "aute in labore minim Excepteur"
+										},
+										{
+											"key": "number",
+											"value": "-46742203"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "results/json"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Argumento no válido o solicitud incorrecta. Argumento de search vacío o number no entero.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) Token de autenticación.",
+										"key": "token",
+										"value": "aute in labore minim Excepteur"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000//api?search=aute in labore minim Excepteur&number=-46742203",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"",
+										"api"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "aute in labore minim Excepteur"
+										},
+										{
+											"key": "number",
+											"value": "-46742203"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Mensaje por token inválido, token expirado o ausencia de token.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) Token de autenticación.",
+										"key": "token",
+										"value": "aute in labore minim Excepteur"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api?search=aute in labore minim Excepteur&number=-46742203",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "aute in labore minim Excepteur"
+										},
+										{
+											"key": "number",
+											"value": "-46742203"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "token/json"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "No se pudo conectar con el portal.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) Token de autenticación.",
+										"key": "token",
+										"value": "aute in labore minim Excepteur"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api?search=aute in labore minim Excepteur&number=-46742203",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "aute in labore minim Excepteur"
+										},
+										{
+											"key": "number",
+											"value": "-46742203"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "rpa/json"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "La operación no se pudo implementar.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) Token de autenticación.",
+										"key": "token",
+										"value": "aute in labore minim Excepteur"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api?search=aute in labore minim Excepteur&number=-46742203",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "aute in labore minim Excepteur"
+										},
+										{
+											"key": "number",
+											"value": "-46742203"
+										}
+									]
+								}
+							},
+							"status": "Not Implemented",
+							"code": 501,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "SiteError/json"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"description": "Folder correspondiente a peticiones GET.",
+			"auth": {
+				"type": "bearer"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Request Examples",
+			"item": [
+				{
+					"name": "Missing-n-request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api?search=bogota",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "bogota"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Standard-request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api?search=bogota&number=20",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "bogota"
+								},
+								{
+									"key": "number",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Overflow-request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api?search=bogota&number=35",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "bogota"
+								},
+								{
+									"key": "number",
+									"value": "35"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Missing-token-request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api?search=bogota",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "bogota"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid-parameter-1-request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api?search=bogota&number=gbgubu",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "bogota"
+								},
+								{
+									"key": "number",
+									"value": "gbgubu"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid-parameter-2-request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api?search=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder de diferentes ejemplos de request."
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000/",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

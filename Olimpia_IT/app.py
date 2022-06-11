@@ -24,9 +24,9 @@ def index():
 
 @login_path.route('/api')
 def api():
+    search = request.args.get('search', None)
+    number = request.args.get('number', None)
     try:
-        search = request.args.get('search', None)
-        number = request.args.get('number', None)
         token = request.headers['Authorization'].split(" ")[1]
         if validateToken(token, output=True) != True:
             return validateToken(token, output=True)
@@ -46,15 +46,12 @@ def api():
                 else:
                     abort(400)
         api_js = Rpa(search, number)
-        # try:
         api_js.driverHandling()
-        # except:
-        #     return {"message": "An error has occurred, please try again."}
         s = InfoSchema()
         response = jsonify(api_js.info)
         if len(s.dump(api_js.info)) == 0:
             if "Error" in api_js.info["message"]:
-                response.status_code = api_js.info["status code"]
+                response.status_code = 404
             elif "There" in api_js.info["message"] :
                 response.status_code = 501
             else:

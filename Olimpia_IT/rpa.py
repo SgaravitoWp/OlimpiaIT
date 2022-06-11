@@ -1,6 +1,7 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.firefox.options import Options
+#from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 from config import variables
@@ -25,31 +26,36 @@ class Rpa():
 
     def driverHandling(self):
 
-        if  self.setConnection() != 200:
-            self.info =  {"message" : "Error connecting to the page",
-             "status code": self.setConnection()}
-        else: 
-
-            options = Options()
-            options.add_argument('--window-size=1024,768')
-            #options.add_argument('--headless')
-            options.add_argument('--disable-gpu')
-            driver = webdriver.Firefox(options = options, executable_path = variables["FILE"] + "/config/geckodriver.exe")
-            driver.get("https://www.einforma.co/buscador-empresas-empresarios")
-            input =  driver.find_element(by=By.ID, value= "search2")
-            input.clear()
-            input.send_keys(str(self.search))
-            driver.find_element(by=By.ID, value = "boton_buscador_nacional").click()
-            if len(driver.find_elements(by=By.CLASS_NAME, value = "notify")) != 0:
-                self.info = {"message" : "There are problems with the page. Please try again or try again later."}
+        try:
+            if  self.setConnection() != 200:
+                self.info =  {"message" : "Error connecting to the page"}
+            else: 
+                options = Options()
+                options.add_argument('--headless')
+                options.add_argument('--disable-gpu')
+                driver = webdriver.Chrome(options = options, executable_path = variables["FILE"] + "/config/chromedriver.exe")
+                #driver = webdriver.Chrome(options = options, executable_path = variables["FILE"] + "/config/geckodriver.exe")
+                driver.get("https://www.einforma.co/buscador-empresas-empresarios")
+                input =  driver.find_element(by=By.ID, value= "search2")
+                input.clear()
+                input.send_keys(str(self.search))
+                driver.find_element(by=By.XPATH, value = "//*[@id='content']/div/div[2]/div[1]/div").click()
+                if len(driver.find_elements(by=By.XPATH, value = "//div//p[contains(text(), 'Servicio No Disponible')]")) != 0:
+                    self.info = {"message" : "There are problems with the page. Please try again or try again later."}
+                    driver.close()
+                else:
+                    self.recursiveSearch(driver)
+        except:
+            self.info = {"message" : "There are problems with the page. Please try again or try again later."}
+            try:
                 driver.close()
-            else:
-                self.recursiveSearch(driver)
+            except:
+                pass
 
     def recursiveSearch(self,driver):
 
-        WebDriverWait(driver, self.wait).until(EC.presence_of_element_located((By.ID, "a_nacional")))
-        pre_score = driver.find_element(by=By.ID, value = "a_nacional")
+        WebDriverWait(driver, self.wait).until(EC.presence_of_element_located((By.XPATH, "//*[@id='a_nacional']")))
+        pre_score = driver.find_element(by=By.XPATH, value = "//*[@id='a_nacional']")
         results_number = re.findall("Empresas y Empresarios \(([0-9]*)\)", pre_score.text)[0]
 
         if int(results_number) == 0: 
@@ -67,8 +73,12 @@ class Rpa():
                 try:
                     driver.close()    
                 except:
-                    pass              
-
+                    pass 
+            try:
+                driver.close()
+            except:
+                pass         
+            
     def switchSearch(self, driver):
         
         table_rows_results =  driver.find_elements(by=By.XPATH, value= "//*[@id='nacional']/tbody/tr")
@@ -132,7 +142,6 @@ class Rpa():
         except:
             shutil.rmtree(dir_name)
             os.mkdir(dir_name)
-
         
     @classmethod
     def stringInt(cls,string):

@@ -1,0 +1,8 @@
+FireFox Version: 101.0.1 (64-bit)
+Geckodriver Version: geckodriver-v0.31.0-win64
+Chrome Version: 102.0.5005.63 (Build oficial) (64 bits)
+ChromeDriver Version: ChromeDriver 102.0.5005.61
+Credentials:
+	username = sgaravito
+	password = OlimpiaIT2022
+requirements: requirements.txt

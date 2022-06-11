@@ -13,7 +13,6 @@ class DevelopmentConfig(Config):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JSON_AS_ASCII = False
     SERVER_NAME = "localhost:5000"
-    DEBUG = True
 
 config = {
     'development': DevelopmentConfig,
