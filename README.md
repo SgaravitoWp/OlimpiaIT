@@ -25,7 +25,7 @@ Para hacer el deploy en local de la API, simplemente active el entorno virtual *
   #### tratar de ejecutar el RPA en Firefox. 
   
   
-  #### Para esto, solo hace falta de rpa.py descomentar la línea 3 y 37, y comentar la línea 36.  
+  #### Para esto, solo hace falta de rpa.py descomentar la línea 3 y 38, y comentar la línea 4 y 37.  
   #### De esta manera se trabaja con las siguientes especificaciones:
  
  - FireFox Version: 101.0.1 (64-bit)
