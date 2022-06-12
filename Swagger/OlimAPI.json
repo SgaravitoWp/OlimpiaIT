@@ -31,6 +31,9 @@
             "$ref": "#/components/parameters/search"
           },
           {
+            "$ref": "#/components/parameters/depto"
+          },
+          {
             "$ref": "#/components/parameters/number"
           }
         ],
@@ -115,6 +118,15 @@
         "name": "search",
         "in": "query",
         "description": "Identificador de búsqueda.",
+        "required": true
+      },
+      "depto": {
+        "schema": {
+          "type": "string"
+        },
+        "name": "depto",
+        "in": "query",
+        "description": "Identificador de departamento.",
         "required": true
       },
       "number": {

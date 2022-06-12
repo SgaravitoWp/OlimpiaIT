@@ -25,6 +25,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/token'
         - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/depto'
         - $ref: '#/components/parameters/number'
       responses:
         '200':
@@ -79,6 +80,13 @@ components:
       name: search
       in: query
       description: Identificador de búsqueda.
+      required: true
+    depto:
+      schema:
+        type: string
+      name: depto
+      in: query
+      description: Identificador de departamento.
       required: true
     number:
       schema:
@@ -162,6 +170,7 @@ components:
           description: >-
             There are problems with the page. Please try again or try again
             later.
+            
     Info501-RpaError:
       type: object
       properties:

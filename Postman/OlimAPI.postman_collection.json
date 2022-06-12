@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "512c06e3-9979-4635-bf38-d1d430f3dc60",
+		"_postman_id": "57fcc112-865d-483d-9a41-ca5dbd27608a",
 		"name": "OlimAPI",
 		"description": "API encargada de gestionar la ejecución de un RPA que consulta información de empresas en el portal https://www.einforma.co/buscador-empresas-empresarios.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -13,22 +13,12 @@
 				{
 					"name": "Navega como máximo los \"n\" primeros resultados de las  empresas, analiza los datos y los retorna de manera      estructurada en un JSON. Provee un screenshot de cada uno de los resultados navegados.",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
 								"description": "(Required) Token de autenticación.",
 								"key": "token",
-								"value": "{{token}}"
+								"value": "dolor Ut do"
 							},
 							{
 								"key": "Accept",
@@ -36,7 +26,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api?search=aute in labore minim Excepteur&number=-46742203",
+							"raw": "{{baseUrl}}/api?search=dolor Ut do&depto=dolor Ut do&number=81373697",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -46,12 +36,17 @@
 							"query": [
 								{
 									"key": "search",
-									"value": "aute in labore minim Excepteur",
+									"value": "dolor Ut do",
 									"description": "(Required) Identificador de búsqueda."
 								},
 								{
+									"key": "depto",
+									"value": "dolor Ut do",
+									"description": "(Required) Identificador de departamento."
+								},
+								{
 									"key": "number",
-									"value": "-46742203",
+									"value": "81373697",
 									"description": "Número de búsquedas."
 								}
 							]
@@ -66,11 +61,11 @@
 									{
 										"description": "(Required) Token de autenticación.",
 										"key": "token",
-										"value": "aute in labore minim Excepteur"
+										"value": "dolor Ut do"
 									}
 								],
 								"url": {
-									"raw": "http://localhost:5000//api?search=aute in labore minim Excepteur&number=-46742203",
+									"raw": "http://localhost:5000//api?search=dolor Ut do&depto=dolor Ut do&number=81373697",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -83,11 +78,15 @@
 									"query": [
 										{
 											"key": "search",
-											"value": "aute in labore minim Excepteur"
+											"value": "dolor Ut do"
+										},
+										{
+											"key": "depto",
+											"value": "dolor Ut do"
 										},
 										{
 											"key": "number",
-											"value": "-46742203"
+											"value": "81373697"
 										}
 									]
 								}
@@ -112,28 +111,29 @@
 									{
 										"description": "(Required) Token de autenticación.",
 										"key": "token",
-										"value": "aute in labore minim Excepteur"
+										"value": "dolor Ut do"
 									}
 								],
 								"url": {
-									"raw": "http://localhost:5000//api?search=aute in labore minim Excepteur&number=-46742203",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/api?search=dolor Ut do&depto=dolor Ut do&number=81373697",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "5000",
 									"path": [
-										"",
 										"api"
 									],
 									"query": [
 										{
 											"key": "search",
-											"value": "aute in labore minim Excepteur"
+											"value": "dolor Ut do"
+										},
+										{
+											"key": "depto",
+											"value": "dolor Ut do"
 										},
 										{
 											"key": "number",
-											"value": "-46742203"
+											"value": "81373697"
 										}
 									]
 								}
@@ -158,11 +158,11 @@
 									{
 										"description": "(Required) Token de autenticación.",
 										"key": "token",
-										"value": "aute in labore minim Excepteur"
+										"value": "dolor Ut do"
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/api?search=aute in labore minim Excepteur&number=-46742203",
+									"raw": "{{baseUrl}}/api?search=dolor Ut do&depto=dolor Ut do&number=81373697",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -172,11 +172,15 @@
 									"query": [
 										{
 											"key": "search",
-											"value": "aute in labore minim Excepteur"
+											"value": "dolor Ut do"
+										},
+										{
+											"key": "depto",
+											"value": "dolor Ut do"
 										},
 										{
 											"key": "number",
-											"value": "-46742203"
+											"value": "81373697"
 										}
 									]
 								}
@@ -201,11 +205,11 @@
 									{
 										"description": "(Required) Token de autenticación.",
 										"key": "token",
-										"value": "aute in labore minim Excepteur"
+										"value": "dolor Ut do"
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/api?search=aute in labore minim Excepteur&number=-46742203",
+									"raw": "{{baseUrl}}/api?search=dolor Ut do&depto=dolor Ut do&number=81373697",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -215,11 +219,15 @@
 									"query": [
 										{
 											"key": "search",
-											"value": "aute in labore minim Excepteur"
+											"value": "dolor Ut do"
+										},
+										{
+											"key": "depto",
+											"value": "dolor Ut do"
 										},
 										{
 											"key": "number",
-											"value": "-46742203"
+											"value": "81373697"
 										}
 									]
 								}
@@ -244,11 +252,11 @@
 									{
 										"description": "(Required) Token de autenticación.",
 										"key": "token",
-										"value": "aute in labore minim Excepteur"
+										"value": "dolor Ut do"
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/api?search=aute in labore minim Excepteur&number=-46742203",
+									"raw": "{{baseUrl}}/api?search=dolor Ut do&depto=dolor Ut do&number=81373697",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -258,11 +266,15 @@
 									"query": [
 										{
 											"key": "search",
-											"value": "aute in labore minim Excepteur"
+											"value": "dolor Ut do"
+										},
+										{
+											"key": "depto",
+											"value": "dolor Ut do"
 										},
 										{
 											"key": "number",
-											"value": "-46742203"
+											"value": "81373697"
 										}
 									]
 								}
@@ -282,30 +294,7 @@
 					]
 				}
 			],
-			"description": "Folder correspondiente a peticiones GET.",
-			"auth": {
-				"type": "bearer"
-			},
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				}
-			]
+			"description": "Folder correspondiente a peticiones GET."
 		},
 		{
 			"name": "Request Examples",
@@ -332,7 +321,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api?search=bogota",
+							"raw": "{{baseUrl}}/api?search=bogota&depto=bogotá",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -343,6 +332,10 @@
 								{
 									"key": "search",
 									"value": "bogota"
+								},
+								{
+									"key": "depto",
+									"value": "bogotá"
 								}
 							]
 						}
@@ -371,7 +364,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api?search=bogota&number=20",
+							"raw": "{{baseUrl}}/api?search=bogota&depto=bogotá&number=20",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -382,6 +375,10 @@
 								{
 									"key": "search",
 									"value": "bogota"
+								},
+								{
+									"key": "depto",
+									"value": "bogotá"
 								},
 								{
 									"key": "number",
@@ -414,7 +411,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api?search=bogota&number=35",
+							"raw": "{{baseUrl}}/api?search=bogota&depto=bogotá&number=35",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -425,6 +422,10 @@
 								{
 									"key": "search",
 									"value": "bogota"
+								},
+								{
+									"key": "depto",
+									"value": "bogotá"
 								},
 								{
 									"key": "number",
@@ -441,7 +442,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api?search=bogota",
+							"raw": "{{baseUrl}}/api?search=bogota&depto=bogotá",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -452,6 +453,10 @@
 								{
 									"key": "search",
 									"value": "bogota"
+								},
+								{
+									"key": "depto",
+									"value": "bogotá"
 								}
 							]
 						}
@@ -480,7 +485,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api?search=bogota&number=gbgubu",
+							"raw": "{{baseUrl}}/api?search=bogota&depto=bogotá&number=bvfbvui",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -493,8 +498,12 @@
 									"value": "bogota"
 								},
 								{
+									"key": "depto",
+									"value": "bogotá"
+								},
+								{
 									"key": "number",
-									"value": "gbgubu"
+									"value": "bvfbvui"
 								}
 							]
 						}
@@ -523,7 +532,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api?search=",
+							"raw": "{{baseUrl}}/api?search=fdvfb&depto=",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -533,6 +542,10 @@
 							"query": [
 								{
 									"key": "search",
+									"value": "fdvfb"
+								},
+								{
+									"key": "depto",
 									"value": ""
 								}
 							]

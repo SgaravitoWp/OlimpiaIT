@@ -25,6 +25,7 @@ def index():
 @login_path.route('/api')
 def api():
     search = request.args.get('search', None)
+    depto = request.args.get('depto', None)
     number = request.args.get('number', None)
     try:
         token = request.headers['Authorization'].split(" ")[1]
@@ -38,14 +39,17 @@ def api():
         if search is None or search == "":
             abort(400)
         else:
-            if number is None:
-                number = 10
+            if depto is None or depto == "":
+                abort(400)
             else:
-                if Rpa.stringInt(number):
-                    number = int(number)
+                if number is None:
+                    number = 10
                 else:
-                    abort(400)
-        api_js = Rpa(search, number)
+                    if Rpa.stringInt(number):
+                        number = int(number)
+                    else:
+                        abort(400)
+        api_js = Rpa(search,depto, number)
         api_js.driverHandling()
         s = InfoSchema()
         response = jsonify(api_js.info)
@@ -54,6 +58,8 @@ def api():
                 response.status_code = 404
             elif "There" in api_js.info["message"] :
                 response.status_code = 501
+            elif "ND" in api_js.info["message"] :
+                abort(400)
             else:
                 response.status_code = 200
             return response
