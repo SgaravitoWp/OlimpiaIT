@@ -1,17 +1,17 @@
 ## OlimAPI
 
-Bienvenido al repositorio correspondente a la prueba tecnica de Olimpia IT. 
+Bienvenido al repositorio correspondiente a la prueba técnica de Olimpia IT. 
 
 Para hacer el deploy en local de la API, simplemente active el entorno virtual **OlimAPI-venv** y ejecute **app.py** dentro del directorio **Olimpia_IT**.
 
-### Se recomienda leer las siguientes instrucciones en caso de tener problemas con la aplicacion en Python. 
+### Se recomienda leer las siguientes instrucciones en caso de tener problemas con la aplicación en Python. 
 
 #### Especificaciones:
 
  - Python Version: 3.9.7
  - requirements: requirements.txt
  
- #### La RPA esta desarrollado inicialmente en Chrome con las siguientes especificaciones:
+ #### La RPA está desarrollado inicialmente en Chrome con las siguientes especificaciones:
  
  - Chrome Version: 102.0.5005.63 (Build oficial) (64 bits)
  - ChromeDriver Version: ChromeDriver 102.0.5005.61
@@ -25,7 +25,7 @@ Para hacer el deploy en local de la API, simplemente active el entorno virtual *
   #### tratar de ejecutar el RPA en Firefox. 
   
   
-  #### Para esto, solo hace falta de rpa.py descomentar la linea 3 y 37, y comentar la linea 36.  
+  #### Para esto, solo hace falta de rpa.py descomentar la línea 3 y 37, y comentar la línea 36.  
   #### De esta manera se trabaja con las siguientes especificaciones:
  
  - FireFox Version: 101.0.1 (64-bit)
@@ -39,5 +39,4 @@ Para hacer el deploy en local de la API, simplemente active el entorno virtual *
  - Credentials:
 	 - username : sgaravito
 	 - password : OlimpiaIT2022
-
 
