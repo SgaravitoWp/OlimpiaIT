@@ -34,7 +34,7 @@ class Rpa():
                 options.add_argument('--headless')
                 options.add_argument('--disable-gpu')
                 driver = webdriver.Chrome(options = options, executable_path = variables["FILE"] + "/config/chromedriver.exe")
-                #driver = webdriver.Chrome(options = options, executable_path = variables["FILE"] + "/config/geckodriver.exe")
+                #driver = webdriver.Firefox(options = options, executable_path = variables["FILE"] + "/config/geckodriver.exe")
                 driver.get("https://www.einforma.co/buscador-empresas-empresarios")
                 input =  driver.find_element(by=By.ID, value= "search2")
                 input.clear()
