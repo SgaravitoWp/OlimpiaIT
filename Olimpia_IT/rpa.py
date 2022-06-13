@@ -70,6 +70,7 @@ class Rpa():
                 driver.find_element(by=By.XPATH, value= f"//*[@id='PROVINCIA']/option[contains(text(), '{self.depto}')]").click()
             except:
                 self.info = {"message": "ND"}
+                driver.close()
             else:
                 WebDriverWait(driver, self.wait).until(EC.presence_of_element_located((By.XPATH, "//*[@id='a_nacional']")))
                 pre_score = driver.find_element(by=By.XPATH, value = "//*[@id='a_nacional']")
