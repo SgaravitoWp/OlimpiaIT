@@ -48,7 +48,7 @@ class Rpa():
                 else:
                     self.recursiveSearch(driver)
         except:
-            self.info["message"] = "An error has ocurred during the process. Please, try again."
+            self.info["alert"] = "An error has ocurred during the process. Please, try again."
             try:
                 driver.close()
             except:

@@ -1,8 +1,8 @@
 from datetime import datetime, timedelta, timezone
 from jwt import encode, decode
+from config import variables
 from jwt import exceptions
 from flask import jsonify
-from config import variables
 
 def expireDate():
     expiration = datetime.now(tz=timezone.utc) + timedelta(seconds=600)
