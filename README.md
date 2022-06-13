@@ -2,7 +2,7 @@
 
 Bienvenido al repositorio correspondiente a la prueba técnica de Olimpia IT. 
 
-Para hacer el deploy en local de la API, simplemente active el entorno virtual **OlimAPI-venv** y ejecute **app.py** dentro del directorio **Olimpia_IT**.
+Para hacer el deploy en local de la API, simplemente cree y active un entorno virtual **OlimAPI-venv** instale **requirements.txt** y finalmente ejecute **app.py** dentro del directorio **Olimpia_IT**.
 
 ### Se recomienda leer las siguientes instrucciones en caso de tener problemas con la aplicación en Python. 
 
