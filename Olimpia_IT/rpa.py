@@ -44,63 +44,46 @@ class Rpa():
                 driver.find_element(by=By.XPATH, value = "//*[@id='content']/div/div[2]/div[1]/div").click()
                 if len(driver.find_elements(by=By.XPATH, value = "//div//p[contains(text(), 'Servicio No Disponible')]")) != 0:
                     self.info = {"message" : "There are problems with the page. Please try again or try again later."}
-                    driver.close()
                 else:
-                    self.recursiveSearch(driver)
-                    try:
-                        driver.close()    
-                    except:
-                        pass 
+                    WebDriverWait(driver, self.wait).until(EC.presence_of_element_located((By.XPATH, "//*[@id='a_nacional']")))
+                    pre_score = driver.find_element(by=By.XPATH, value = "//*[@id='a_nacional']")
+                    results_number = re.findall("Empresas y Empresarios \(([0-9]*)\)", pre_score.text)[0]
+
+                    if int(results_number) == 0: 
+                        self.info = {"message": "No results"}
+                    else:
+                        self.recursiveSearch(driver) 
         except:
             self.info["alert"] = "An error has ocurred on the website during the process. Please, try again."
-            try:
-                driver.close()
-            except:
-                pass
-
+        finally:
+            driver.close()
+      
     def recursiveSearch(self,driver):
 
-        WebDriverWait(driver, self.wait).until(EC.presence_of_element_located((By.XPATH, "//*[@id='a_nacional']")))
-        pre_score = driver.find_element(by=By.XPATH, value = "//*[@id='a_nacional']")
-        results_number = re.findall("Empresas y Empresarios \(([0-9]*)\)", pre_score.text)[0]
+        driver.find_element(by=By.XPATH, value= f"//*[@id='PROVINCIA']").click()
 
-        if int(results_number) == 0: 
-            self.info = {"message": "No results"} 
-            driver.close()
+        try:
+            driver.find_element(by=By.XPATH, value= f"//*[@id='PROVINCIA']/option[contains(text(), '{self.depto}')]").click()
+        except:
+            self.info = {"message": "ND"}
         else:
-            driver.find_element(by=By.XPATH, value= f"//*[@id='PROVINCIA']").click()
+            WebDriverWait(driver, self.wait).until(EC.presence_of_element_located((By.XPATH, "//*[@id='a_nacional']")))
+            pre_score = driver.find_element(by=By.XPATH, value = "//*[@id='a_nacional']")
+            results_number = re.findall("Empresas y Empresarios \(([0-9]*)\)", pre_score.text)[0]
 
-            try:
-                driver.find_element(by=By.XPATH, value= f"//*[@id='PROVINCIA']/option[contains(text(), '{self.depto}')]").click()
-            except:
-                self.info = {"message": "ND"}
-                driver.close()
+            if int(results_number) == 0: 
+                self.info = {"message": "No results"} 
             else:
-                WebDriverWait(driver, self.wait).until(EC.presence_of_element_located((By.XPATH, "//*[@id='a_nacional']")))
-                pre_score = driver.find_element(by=By.XPATH, value = "//*[@id='a_nacional']")
-                results_number = re.findall("Empresas y Empresarios \(([0-9]*)\)", pre_score.text)[0]
-
-                if int(results_number) == 0: 
-                    self.info = {"message": "No results"} 
-                    driver.close()
-                else:
-                    self.info["score"] = int(results_number)
+                self.info["score"] = int(results_number)
+                if self.counter == 0:
                     self.info["results"] = list()
 
-                    self.switchSearch(driver)
-                
-                    if self.counter == 12 or self.counter == 24:
-                        driver.find_element(by=By.XPATH, value= f"//*[@id='nacional']/div[3]/div/div[2]/ul/li[{int(((self.counter)/12)+2)}]/a").click()
-                        self.recursiveSearch(driver)
-                        try:
-                            driver.close()    
-                        except:
-                            pass 
-                    try:
-                        driver.close()
-                    except:
-                        pass        
-            
+                self.switchSearch(driver)
+        
+                if self.counter == 12 or self.counter == 24:
+                    driver.find_element(by=By.XPATH, value= f"//*[@id='nacional']/div[3]/div/div[2]/ul/li[{int(((self.counter)/12)+2)}]/a").click()
+                    self.recursiveSearch(driver)                        
+        
     def switchSearch(self, driver):
         
         table_rows_results =  driver.find_elements(by=By.XPATH, value= "//*[@id='nacional']/tbody/tr")
@@ -175,6 +158,16 @@ class Rpa():
             return False
 
         
+
+
+
+
+
+
+
+
+
+
 
 
 
