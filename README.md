@@ -31,11 +31,10 @@ Para hacer el deploy en local de la API, simplemente active el entorno virtual *
  - FireFox Version: 101.0.1 (64-bit)
  - Geckodriver Version: geckodriver-v0.31.0-win64
  
-
 #### Repositorio:
  - Github Repository: https://github.com/SgaravitoWp/OlimpiaIT.git
  
-#### Autenticación:
+#### Autenticación: El token de autenticaión tiene un tiempo de vida de 10 minutos. 
  - Credentials:
 	 - username : sgaravito
 	 - password : OlimpiaIT2022
