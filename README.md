@@ -1,6 +1,6 @@
 ## OlimAPI
 
-Bienvenido al repositorio correspondiente a la prueba técnica de Olimpia IT. 
+Bienvenido al repositorio de OlimAPI. 
 
 Para hacer el deploy en local de la API, simplemente cree y active un entorno virtual **OlimAPI-venv**, instale **requirements.txt** y finalmente ejecute **app.py** dentro del directorio **Olimpia_IT**.
 
